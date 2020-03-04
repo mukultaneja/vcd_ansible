@@ -1,0 +1,87 @@
+---
+# tasks file for vappvm
+
+- name: create vapp vm
+  vcd_vapp_vm:
+    user: acmeadmin
+    password: VMware1!
+    org: Acme
+    target_vm_name: centos
+    target_vapp: vApp_system_2
+    source_vdc: ACME_PAYG
+    target_vdc: ACME_PAYG
+    source_vapp: acme_vapp
+    source_vm_name: "Tiny Linux template"
+    power_on: True
+    all_eulas_accepted: true
+    state: present
+  register: output
+
+
+- name: create vapp vm output
+  debug:
+    msg: '{{ output }}'
+
+# - name: deploy vapp vm
+#   vcd_vapp_vm:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     target_vm_name: centos
+#     target_vapp: acme_vapp
+#     target_vdc: ACME_PAYG
+#     operation: deploy
+#   register: output
+
+
+# - name: deploy vapp vm output
+#   debug:
+#     msg: '{{ output }}'
+
+# - name: power on vapp vm
+#   vcd_vapp_vm:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     target_vm_name: centos_1
+#     target_vapp: acme_vapp
+#     target_vdc: ACME_PAYG
+#     operation: poweron
+#   register: output
+
+
+# - name: power on vapp vm output
+#   debug:
+#     msg: '{{ output }}'
+
+# - name: delete vapp vm
+#   vcd_vapp_vm:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     target_vm_name: centos_1
+#     target_vapp: acme_vapp
+#     target_vdc: ACME_PAYG
+#     state: absent
+#   register: output
+
+# - name: delete vapp vm output
+#   debug:
+#     msg: '{{ output }}'
+
+
+# - name: undeploy vapp vm
+#   vcd_vapp_vm:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     target_vm_name: centos
+#     target_vapp: acme_vapp
+#     target_vdc: ACME_PAYG
+#     operation: undeploy
+#   register: output
+
+
+# - name: undeploy vapp vm output
+#   debug:
+#     msg: '{{ output }}'

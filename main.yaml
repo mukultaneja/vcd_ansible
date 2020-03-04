@@ -1,0 +1,25 @@
+---
+
+- name: Ansible Modules for vCloudDirector
+  hosts: localhost
+  environment:
+    env_user: root
+    env_password: ca$hc0w
+    env_org: System
+    env_api_version: 31.0
+    env_host: 10.160.29.245
+
+  roles:
+      # - org
+      # - user
+      # - vdc
+      # - catalogs
+      # - catalog_items
+      # - vapp
+      # - vappvm
+      # - external_networks
+      # - vcd_edge_gateway
+      # - org_vdc_networks
+      # - vcd_vapp_vm_snapshot
+      - vcd_vapp_vm_disk
+      # - vcd_vapp_vm_nic

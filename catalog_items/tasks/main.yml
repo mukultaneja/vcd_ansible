@@ -1,0 +1,33 @@
+---
+# tasks file for catalog_items
+
+- name: upload iso to catalog
+  vcd_catalog_item:
+    user: acmeadmin
+    password: VMware1!
+    org: Acme
+    catalog_name: acme_catalog
+    item_name: Tiny Linux
+    file_name: "/Users/mtaneja/Work/projects/mac/vcd_ansible/ovfs/Tiny Linux VM.ovf"
+    state: present
+  register: output
+
+- name: upload iso output
+  debug:
+    msg: '{{ output }}'
+
+# - name: capture vapp
+#   vcd_catalog_item:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     catalog_name: acme_catalog
+#     item_name: centos
+#     vapp_name: acme_vapp
+#     vdc_name: ACME_PAYG
+#     operation: "capturevapp"
+#   register: output
+
+# - name: capture vapp output
+#   debug:
+#     msg: '{{ output }}'

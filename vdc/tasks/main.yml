@@ -1,0 +1,55 @@
+---
+# tasks file for vdc
+
+  - name: create org vdc
+    vcd_org_vdc:
+      vdc_org_name: Acme
+      vdc_name: ACME_PAYG
+      provider_vdc_name: vc.0
+      is_enabled: true
+      storage_profiles:
+        - name: "*"
+          enabled: true
+          units: MB
+          limit: 100000
+          default: true
+      state: present
+    register: output
+
+  - name: create org vdc output
+    debug:
+      msg: '{{ output }}'
+
+
+  # - name: update org vdc
+  #   vcd_org_vdc:
+  #     vdc_name: sample_vdc_01
+  #     provider_vdc_name: vc_pvdc
+  #     is_enabled: true
+  #     state: "update"
+  #   register: output
+
+  # - name: update org vdc output
+  #   debug:
+  #     msg: '{{ output }}'
+
+  - name: list_vdcs
+    vcd_org_vdc:
+      vdc_org_name: Acme
+      operation: list_vdcs
+    register: output
+
+  - name: list_vdcs output
+    debug:
+      msg: '{{ output }}'
+
+  # - name: delete vdc
+  #   vcd_org_vdc:
+  #     vdc_name: sample_vdc_01
+  #     provider_vdc_name: vc_pvdc
+  #     state: absent
+  #   register: output
+
+  # - name: delete vdc output
+  #   debug:
+  #     msg: '{{ output }}'

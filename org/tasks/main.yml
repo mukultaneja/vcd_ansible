@@ -1,0 +1,36 @@
+---
+# tasks file for org
+
+# - name: add rights to org
+#   vcd_org:
+#     org_name: Acme
+#     org_rights:
+#       - "Catalog: Import Media from vSphere"
+#     operation: add_rights
+#   register: output
+
+# - name: add rights output
+#   debug:
+#     msg: ' {{ output }}'
+
+- name: create org
+  vcd_org:
+    org_name: Acme
+    full_name: Acme
+    is_enabled: true
+    state: present
+  register: output
+
+- name: create org output
+  debug:
+    msg: '{{ output }}'
+
+# - name: list roles
+#   vcd_org:
+#     org_name: Acme
+#     operation: list_roles
+#   register: output
+
+# - name: list roles output
+#   debug:
+#     msg: '{{ output }}'

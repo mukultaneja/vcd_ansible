@@ -1,0 +1,43 @@
+---
+# tasks file for vcd_edge_gateway
+
+- name: create edge gateway
+  vcd_vdc_gateway:
+    org_name: Acme
+    vdc_name: ACME_PAYG
+    gateway_name: edge-gateway
+    gateway_backing_config: compact
+    external_networks:
+      - external-network
+    state: present
+  register: output
+
+- name: create edge gateway output
+  debug:
+    msg: '{{ output }}'
+
+# - name: update edge gateway
+#   vcd_vdc_gateway:
+#     org_name: Acme
+#     vdc_name: ACME_PAYG
+#     gateway_name: edge-gateway
+#     new_gateway_name: edge-gateway-01
+#     ha_enabled: true
+#     state: update
+#   register: output
+
+# - name: update edge gateway output
+#   debug:
+#     msg: '{{ output }}'
+
+# - name: delete edge gateway
+#   vcd_vdc_gateway:
+#     org_name: Acme
+#     vdc_name: ACME_PAYG
+#     gateway_name: edge-gateway-01
+#     state: absent
+#   register: output
+
+# - name: delete edge gateway output
+#   debug:
+#     msg: '{{ output }}'

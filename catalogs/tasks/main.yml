@@ -1,0 +1,16 @@
+---
+# tasks file for catalogs
+
+- name: create catalog
+  vcd_catalog:
+    user: acmeadmin
+    password: VMware1!
+    org: Acme
+    catalog_name: acme_catalog
+    description: acme catalog
+    state: present
+  register: output
+
+- name: create catalog output
+  debug:
+    msg: '{{ output }}'

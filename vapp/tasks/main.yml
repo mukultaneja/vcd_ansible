@@ -1,0 +1,32 @@
+---
+# tasks file for vapp
+
+- name: create vapp
+  vcd_vapp:
+    user: acmeadmin
+    password: VMware1!
+    org: Acme
+    vapp_name: vApp_system_2
+    vdc: ACME_PAYG
+    state: present
+  register: output
+
+
+- name: create vapp output
+  debug:
+    msg: '{{ output }}'
+
+# - name: delete vapp
+#   vcd_vapp:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     vapp_name: acme_vapp
+#     vdc: ACME_PAYG
+#     state: absent
+#   register: output
+
+# - name: delete vapp output
+#   debug:
+#     msg: '{{ output }}'
+

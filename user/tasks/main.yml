@@ -1,0 +1,21 @@
+---
+# tasks file for user
+
+- name: create org user
+  vcd_user:
+    username: acmeadmin
+    userpassword: VMware1!
+    org_name: Acme
+    role_name: Organization Administrator
+    full_username: acmeadmin
+    description: Acme Admin
+    is_enabled: true
+    stored_vm_quota: 30
+    deployed_vm_quota: 20
+    is_default_cached: true
+    state: present
+  register: output
+
+- name: create user output
+  debug:
+    msg: '{{ output }}'

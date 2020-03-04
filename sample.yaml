@@ -1,0 +1,15 @@
+---
+
+- name: sample
+  hosts: sddc_centos
+  remote_user: root
+  
+  tasks:
+
+    - name: print hello world
+      shell: echo "Hello World"
+      register: output
+
+    - name: print output
+      debug:
+        msg: '{{ output }}'

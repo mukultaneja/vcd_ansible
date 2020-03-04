@@ -1,0 +1,52 @@
+---
+# tasks file for vcd_vapp_vm_disk
+
+
+- name: add a disk
+  vcd_vapp_vm_disk:
+    user: acmeadmin
+    password: VMware1!
+    org: Acme
+    vm_name: centos
+    vapp: vApp_system_2
+    vdc: ACME_PAYG
+    disks:
+      - {"size": "1024"}
+    state: present
+  register: myResult
+
+- name: Show the data
+  debug:
+    msg: "The dictionary returned is {{ myResult }}"
+
+# - name: add a disk
+#   vcd_vapp_vm_disk:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     vm_name: centos
+#     vapp: vApp_system_2
+#     vdc: ACME_PAYG
+#     disk_name: "Hard disk 2"
+#     size: 1
+#     state: present
+#   register: myResult
+
+# - name: Show the data
+#   debug:
+#     msg: "The dictionary returned is {{ myResult }}"
+
+# - name: Read my disks
+#   vcd_vapp_vm_disk:
+#     user: acmeadmin
+#     password: VMware1!
+#     org: Acme
+#     vm_name: centos
+#     vapp: vApp_system_2
+#     vdc: ACME_PAYG
+#     operation: read
+#   register: myResult
+
+# - name: Show the data
+#   debug:
+#     msg: "The dictionary returned is {{ myResult }}"

@@ -1,0 +1,48 @@
+---
+
+- name: vCloudDirectorAnsible
+  hosts: localhost
+  environment:
+    env_user: root
+    env_password: ca$hc0w
+    env_host: 10.192.229.44
+    env_org: System
+    env_api_version: 30.0
+    env_verify_ssl_certs: false
+
+  tasks:
+      - name: create org
+        vcd_org:
+          org_name: Acme
+          full_name: Acme
+          is_enabled : true
+          state: present
+        register: output
+
+      - name: create org output
+        debug:
+          msg: '{{ output }}'
+
+      - name: create user
+        vcd_user:
+          username: acmeadmin
+          userpassword: VMware1!
+          role_name: Organization Administrator
+          org_name: Acme
+          state: present
+        register: output
+
+      - name: create user output
+        debug:
+          msg: '{{ output }}'
+
+      - name: create catalog
+        vcd_catalog:
+          catalog_name: test_catalog
+          description: test catalog
+          state: present
+        register: output
+
+      - name: create catalog output
+        debug:
+          msg: '{{ output }}'
